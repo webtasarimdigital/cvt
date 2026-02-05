@@ -71,7 +71,7 @@ export default function AboutSection() {
                             </p>
 
                             <p className="text-sm border-l-4 border-cvt-cyan pl-4 italic">
-                                ODEN LOJİSTİK A.Ş., adopts a customer-oriented approach where customers can easily convey their requests and complaints,
+                                CVT LOGISTICS, adopts a customer-oriented approach where customers can easily convey their requests and complaints,
                                 handling them with objectivity, fairness, and confidentiality.
                             </p>
                         </div>

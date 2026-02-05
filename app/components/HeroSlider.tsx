@@ -10,7 +10,7 @@ const sliderData = [
         id: "air",
         title: "Air Transport",
         icon: <FaPlane />,
-        description: "Cvtlog Logistics is a full service freight forwarder offering import and export services from/to Turkey. With an experience of over 25 years we will offer you innovative, competitive and cost effective logistics solutions.",
+        description: "Fast and reliable air freight solutions for time-sensitive cargo. We ensure your goods reach their global destinations safely and on schedule.",
         images: [
             "/air_transport_flight.png",
             "/air_transport_loading.png",
@@ -32,7 +32,7 @@ const sliderData = [
         id: "trucks",
         title: "Road Transport",
         icon: <FaTruck />,
-        description: "Reliable road transport services across Europe and Asia. Our modern fleet ensures efficient and secure delivery of your cargo.",
+        description: "Reliable road transport services across Europe and Asia. Our modern fleet ensures efficient and secure delivery of your cargo every time.",
         images: [
             "/road_transport_highway.png",
             "/road_transport_fleet.png",
@@ -43,7 +43,7 @@ const sliderData = [
         id: "train",
         title: "Rail Transport",
         icon: <FaTrain />,
-        description: "Eco-friendly and cost-effective rail transport solutions. Connecting major industrial hubs with seamless railway logistics.",
+        description: "Eco-friendly and cost-effective rail transport solutions. Connecting major industrial hubs with seamless railway logistics for your needs.",
         images: [
             "/rail_transport_train.png",
             "/rail_transport_yard.png",
@@ -91,13 +91,13 @@ export default function HeroSlider() {
     return (
         <div className="relative h-screen w-full bg-slate-50 overflow-hidden flex flex-col md:flex-row">
 
-            {/* Left Content Area */}
-            <div className="relative z-20 w-full md:w-[45%] h-full flex items-center justify-center pl-8 md:pl-20 pr-4 bg-white">
-                {/* Curve Overlap for Desktop */}
-                <div className="absolute top-0 right-[-100px] h-full w-[200px] bg-white hidden md:block"
-                    style={{ clipPath: "ellipse(60% 100% at 30% 50%)" }}></div>
+            {/* Left Content Area - INCREASED WIDTH for more whitespace */}
+            <div className="relative z-20 w-full md:w-[60%] h-full flex items-center justify-center pl-8 md:pl-20 pr-4 bg-white">
+                {/* Curve Overlap for Desktop - Adjusted position */}
+                <div className="absolute top-0 right-[-150px] h-full w-[300px] bg-white hidden md:block"
+                    style={{ clipPath: "ellipse(70% 100% at 35% 50%)" }}></div>
 
-                <div className="flex flex-col gap-6 max-w-lg z-10 animate-fade-in-up">
+                <div className="flex flex-col gap-6 max-w-xl z-10 animate-fade-in-up pt-20">
                     <div className="flex items-center gap-3 text-cvt-cyan font-bold tracking-widest uppercase text-sm">
                         <span className="p-2 bg-cvt-cyan/10 rounded-lg text-lg">
                             {currentCategory.icon}
@@ -105,11 +105,11 @@ export default function HeroSlider() {
                         LOGISTICS SERVICES
                     </div>
 
-                    <h1 className="text-5xl md:text-6xl font-extrabold text-cvt-blue leading-tight">
+                    <h1 className="text-5xl md:text-7xl font-extrabold text-cvt-blue leading-tight min-h-[1.2em]">
                         {currentCategory.title}
                     </h1>
 
-                    <p className="text-gray-600 text-lg leading-relaxed">
+                    <p className="text-gray-600 text-lg leading-relaxed min-h-[4.5em]">
                         {currentCategory.description}
                     </p>
 
@@ -121,8 +121,8 @@ export default function HeroSlider() {
                 </div>
             </div>
 
-            {/* Right Image Area */}
-            <div className="relative w-full md:w-[65%] h-full bg-gray-900 overflow-hidden -ml-[10%] clip-path-slant md:clip-path-none">
+            {/* Right Image Area - DECREASED WIDTH */}
+            <div className="relative w-full md:w-[50%] h-full bg-gray-900 overflow-hidden -ml-[10%] clip-path-slant md:clip-path-none">
                 {currentCategory.images.map((img, idx) => (
                     <div
                         key={`${currentCategory.id}-${idx}`}
@@ -137,7 +137,7 @@ export default function HeroSlider() {
                             priority
                         />
                         {/* Gradient Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-transparent to-black/40 md:via-transparent md:from-white/5" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-transparent to-black/40 md:via-transparent md:from-white/10" />
                     </div>
                 ))}
 
@@ -152,34 +152,36 @@ export default function HeroSlider() {
                                 setSubIndices(newIndices);
                             }}
                             className={`transition-all duration-300 rounded-full shadow-lg ${idx === currentImageIndex
-                                    ? "bg-cvt-cyan w-10 h-3"
-                                    : "bg-white/60 w-3 h-3 hover:bg-white"
+                                ? "bg-cvt-cyan w-10 h-3"
+                                : "bg-white/60 w-3 h-3 hover:bg-white"
                                 }`}
                         />
                     ))}
                 </div>
             </div>
 
-            {/* Global Navigation Arrows (Edge to Edge) */}
+            {/* Global Navigation Arrows (Edge to Edge) - FIXED VISIBILITY & OVERLAP */}
             <button
                 onClick={() => handleCategoryChange("prev")}
-                className="absolute top-1/2 left-4 md:left-10 transform -translate-y-1/2 z-40 w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white flex items-center justify-center hover:bg-cvt-cyan hover:border-cvt-cyan transition shadow-lg group"
+                className="absolute top-1/2 left-4 md:left-8 transform -translate-y-1/2 z-50 w-12 h-12 md:w-16 md:h-16 bg-white text-cvt-blue rounded-full shadow-2xl flex items-center justify-center hover:bg-cvt-cyan hover:text-white transition group border border-gray-100"
             >
-                <FaChevronLeft className="group-hover:-translate-x-1 transition" size={20} />
+                <FaChevronLeft className="group-hover:-translate-x-1 transition" size={24} />
             </button>
 
             <button
                 onClick={() => handleCategoryChange("next")}
-                className="absolute top-1/2 right-4 md:right-10 transform -translate-y-1/2 z-40 w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white flex items-center justify-center hover:bg-cvt-cyan hover:border-cvt-cyan transition shadow-lg group"
+                className="absolute top-1/2 right-4 md:right-8 transform -translate-y-1/2 z-50 w-12 h-12 md:w-16 md:h-16 bg-white text-cvt-blue rounded-full shadow-2xl flex items-center justify-center hover:bg-cvt-cyan hover:text-white transition group border border-gray-100"
             >
-                <FaChevronRight className="group-hover:translate-x-1 transition" size={20} />
+                <FaChevronRight className="group-hover:translate-x-1 transition" size={24} />
             </button>
 
 
-            {/* Modern Badges (Right Side) */}
-            <div className="absolute top-1/3 right-0 z-40 hidden md:flex flex-col gap-4 items-end">
+            {/* Modern Badges (Right Side) - MOVED UP TO AVOID OVERLAP */}
+            <div className="absolute top-24 right-0 z-40 hidden md:flex flex-col gap-4 items-end pointer-events-none">
+                {/* Pointer events none wrapper so clicks pass through if needed, but inner divs have pointer-events-auto */}
+
                 {/* Years Experience */}
-                <div className="bg-cvt-cyan text-cvt-dark py-4 px-6 rounded-l-lg shadow-xl transform translate-x-2 hover:translate-x-0 transition duration-300 flex items-center gap-4 cursor-default w-64">
+                <div className="bg-cvt-cyan text-cvt-dark py-4 px-6 rounded-l-lg shadow-xl transform translate-x-2 hover:translate-x-0 transition duration-300 flex items-center gap-4 cursor-default w-64 pointer-events-auto">
                     <div className="text-4xl font-black">25</div>
                     <div className="flex flex-col leading-none">
                         <span className="font-bold text-lg">YEARS</span>
@@ -188,7 +190,7 @@ export default function HeroSlider() {
                 </div>
 
                 {/* Get Quote */}
-                <div className="bg-[#1b2e38] text-white py-4 px-6 rounded-l-lg shadow-xl transform translate-x-2 hover:translate-x-0 transition duration-300 flex items-center gap-4 cursor-pointer group w-64 border-l-4 border-orange-500">
+                <div className="bg-[#1b2e38] text-white py-4 px-6 rounded-l-lg shadow-xl transform translate-x-2 hover:translate-x-0 transition duration-300 flex items-center gap-4 cursor-pointer group w-64 border-l-4 border-orange-500 pointer-events-auto">
                     <div className="bg-orange-500 p-2 rounded-full group-hover:rotate-45 transition duration-500">
                         <FaArrowRight size={16} />
                     </div>
@@ -198,10 +200,6 @@ export default function HeroSlider() {
                     </div>
                 </div>
             </div>
-
-            {/* Bottom Curve SVG to mimic Kinay if needed, or simple curve */}
-            {/* We used a CSS clip-path simulation with the overlay div above for simplicity and cleanliness */}
-
         </div>
     );
 }

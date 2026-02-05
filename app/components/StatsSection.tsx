@@ -58,51 +58,47 @@ export default function StatsSection() {
     }, [isVisible]);
 
     return (
-        <section ref={sectionRef} className="py-20 bg-white">
+        <section ref={sectionRef} className="py-12 bg-white">
             <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {stats.map((stat, index) => (
-                        <div key={index} className="flex flex-col items-center justify-center p-6 group">
+                        <div key={index} className="flex flex-col items-center justify-center p-4 group">
                             {/* Circular Design */}
-                            <div className="relative w-48 h-48 flex items-center justify-center">
+                            <div className="relative w-40 h-40 flex items-center justify-center">
                                 {/* Background Circle */}
                                 <svg className="absolute top-0 left-0 w-full h-full transform -rotate-90">
                                     <circle
-                                        cx="96"
-                                        cy="96"
-                                        r="90"
+                                        cx="80"
+                                        cy="80"
+                                        r="70"
                                         className="stroke-gray-100"
                                         strokeWidth="8"
                                         fill="transparent"
                                     />
                                     {/* Progress Circle - Animated */}
                                     <circle
-                                        cx="96"
-                                        cy="96"
-                                        r="90"
+                                        cx="80"
+                                        cy="80"
+                                        r="70"
                                         className={`stroke-current ${index % 2 === 0 ? 'text-cvt-cyan' : 'text-cvt-blue'} transition-all duration-[2000ms] ease-out`}
                                         strokeWidth="8"
                                         fill="transparent"
-                                        strokeDasharray={565} // 2 * PI * 90
-                                        strokeDashoffset={isVisible ? 0 : 565}
+                                        strokeDasharray={440} // 2 * PI * 70
+                                        strokeDashoffset={isVisible ? 0 : 440}
                                         strokeLinecap="round"
                                     />
                                 </svg>
 
                                 {/* Inner Text */}
                                 <div className="z-10 text-center flex flex-col items-center">
-                                    <span className={`text-5xl font-extrabold ${stat.color}`}>
+                                    <span className={`text-4xl font-extrabold ${stat.color}`}>
                                         {counts[index]}{stat.suffix}
                                     </span>
                                 </div>
                             </div>
 
-                            {/* Label outside circle matches reference somewhat, or we can put it insde. 
-                                Reference has label to the right. Let's try inside/below for cleaner look or mimic reference strictly?
-                                User Ref: Circle contains Number. Label is to the right. 
-                                Let's adjust to match reference: Circle | Text 
-                            */}
-                            <div className="mt-6 text-xl font-bold text-gray-700 uppercase tracking-widest text-center">
+                            {/* Label outside circle */}
+                            <div className="mt-4 text-lg font-bold text-gray-700 uppercase tracking-widest text-center">
                                 {stat.label}
                             </div>
                         </div>

@@ -3,6 +3,9 @@ import HeroSlider from "./components/HeroSlider";
 import AboutSection from "./components/AboutSection";
 import StatsSection from "./components/StatsSection";
 import ServicesSection from "./components/ServicesSection";
+import WhatsAppButton from "./components/WhatsAppButton";
+import BlogSection from "./components/BlogSection";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -12,6 +15,9 @@ export default function Home() {
       <AboutSection />
       <StatsSection />
       <ServicesSection />
+      <WhatsAppButton />
+      <BlogSection />
+      <Footer />
     </main>
   );
 }
