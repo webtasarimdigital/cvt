@@ -55,6 +55,8 @@ const sliderData = [
 export default function HeroSlider() {
     const [activeCategory, setActiveCategory] = useState(0);
     const [subIndices, setSubIndices] = useState([0, 0, 0, 0]);
+    const [touchStart, setTouchStart] = useState<number | null>(null);
+    const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
     // Auto-rotate sub-images 
     useEffect(() => {
@@ -85,15 +87,66 @@ export default function HeroSlider() {
         }
     };
 
+    // Drag / Swipe Logic
+    const minSwipeDistance = 50;
+
+    const onTouchStart = (e: React.TouchEvent) => {
+        setTouchEnd(null);
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const onTouchMove = (e: React.TouchEvent) => setTouchEnd(e.targetTouches[0].clientX);
+
+    const onTouchEnd = () => {
+        if (!touchStart || !touchEnd) return;
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+        if (isLeftSwipe) handleCategoryChange("next");
+        if (isRightSwipe) handleCategoryChange("prev");
+    };
+
+    const onMouseDown = (e: React.MouseEvent) => {
+        setTouchEnd(null);
+        setTouchStart(e.clientX);
+    };
+
+    const onMouseMove = (e: React.MouseEvent) => {
+        if (touchStart) setTouchEnd(e.clientX);
+    };
+
+    const onMouseUp = () => {
+        if (!touchStart || !touchEnd) {
+            setTouchStart(null);
+            return;
+        }
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+        if (isLeftSwipe) handleCategoryChange("next");
+        if (isRightSwipe) handleCategoryChange("prev");
+        setTouchStart(null);
+        setTouchEnd(null);
+    };
+
     const currentCategory = sliderData[activeCategory];
     const currentImageIndex = subIndices[activeCategory];
 
     return (
-        <div className="relative h-screen w-full bg-slate-50 overflow-hidden flex flex-col md:flex-row">
+        <div
+            className="relative h-screen w-full bg-slate-50 overflow-hidden flex flex-col md:flex-row cursor-grab active:cursor-grabbing select-none"
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+            onMouseDown={onMouseDown}
+            onMouseMove={onMouseMove}
+            onMouseUp={onMouseUp}
+            onMouseLeave={onMouseUp}
+        >
 
-            {/* Left Content Area */}
-            <div className="relative z-20 w-full md:w-[45%] h-full flex items-center justify-center pl-8 md:pl-20 pr-4 bg-white">
-                <div className="flex flex-col gap-6 max-w-xl z-10 animate-fade-in-up pt-20">
+            {/* Left Content Area - Widened to 55% to push image right */}
+            <div className="relative z-20 w-full md:w-[55%] h-full flex items-center justify-center pl-8 md:pl-20 pr-4 bg-white pointer-events-none">
+                <div className="flex flex-col gap-6 max-w-xl z-10 animate-fade-in-up pt-20 pointer-events-auto">
                     <div className="flex items-center gap-3 text-cvt-cyan font-bold tracking-widest uppercase text-sm">
                         <span className="p-2 bg-cvt-cyan/10 rounded-lg text-lg">
                             {currentCategory.icon}
@@ -117,10 +170,11 @@ export default function HeroSlider() {
                 </div>
             </div>
 
-            {/* Right Image Area - Curved "Half Moon" Shape */}
+            {/* Right Image Area - Narrowed/Pushed Right */}
+            {/* Reduced width to 55% and adjusted clip path to be less intrusive */}
             <div
-                className="relative w-full md:w-[65%] h-full bg-gray-900 overflow-hidden -ml-[10%] md:-ml-0"
-                style={{ clipPath: "ellipse(90% 100% at 90% 50%)" }}
+                className="relative w-full md:w-[55%] h-full bg-gray-900 overflow-hidden -ml-[10%] md:-ml-0 pointer-events-none"
+                style={{ clipPath: "ellipse(80% 100% at 80% 50%)" }}
             >
                 {currentCategory.images.map((img, idx) => (
                     <div
@@ -136,16 +190,17 @@ export default function HeroSlider() {
                             priority
                         />
                         {/* Gradient Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent" />
                     </div>
                 ))}
 
-                {/* Sub-Image Indicators (Dots on Image) */}
-                <div className="absolute bottom-12 left-1/4 transform -translate-x-1/2 flex gap-3 z-30">
+                {/* Sub-Image Indicators (Dots on Image) - Pointer events allowed for clicking */}
+                <div className="absolute bottom-12 left-1/4 transform -translate-x-1/2 flex gap-3 z-30 pointer-events-auto">
                     {currentCategory.images.map((_, idx) => (
                         <button
                             key={idx}
-                            onClick={() => {
+                            onClick={(e) => {
+                                e.stopPropagation(); // Prevent drag
                                 const newIndices = [...subIndices];
                                 newIndices[activeCategory] = idx;
                                 setSubIndices(newIndices);
@@ -160,16 +215,17 @@ export default function HeroSlider() {
             </div>
 
             {/* Global Navigation Arrows */}
+            {/* Added stopPropagation to prevent triggering drag when clicking arrows */}
             <div className="absolute top-1/2 w-full flex justify-between px-4 md:px-12 z-50 pointer-events-none">
                 <button
-                    onClick={() => handleCategoryChange("prev")}
+                    onClick={(e) => { e.stopPropagation(); handleCategoryChange("prev"); }}
                     className="w-14 h-14 bg-white text-cvt-blue rounded-full shadow-2xl flex items-center justify-center hover:bg-cvt-cyan hover:text-white transition group border border-gray-100 pointer-events-auto transform hover:scale-110 active:scale-95"
                 >
                     <FaChevronLeft className="group-hover:-translate-x-1 transition" size={20} />
                 </button>
 
                 <button
-                    onClick={() => handleCategoryChange("next")}
+                    onClick={(e) => { e.stopPropagation(); handleCategoryChange("next"); }}
                     className="w-14 h-14 bg-white text-cvt-blue rounded-full shadow-2xl flex items-center justify-center hover:bg-cvt-cyan hover:text-white transition group border border-gray-100 pointer-events-auto transform hover:scale-110 active:scale-95"
                 >
                     <FaChevronRight className="group-hover:translate-x-1 transition" size={20} />

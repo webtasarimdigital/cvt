@@ -30,20 +30,22 @@ export default function ValuesSection() {
                     OUR CORPORATE VALUES
                 </h2>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
                     {values.map((item) => (
-                        <div key={item.id} className="flex flex-col items-center group">
-                            {/* Label */}
-                            <span className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4 group-hover:text-cvt-cyan transition">
-                                {item.label}
-                            </span>
+                        <div key={item.id} className="flex flex-col items-center group cursor-default">
+                            {/* Card Box - Rectangular & Smaller */}
+                            <div className="w-full h-20 bg-white rounded-lg shadow-sm border border-gray-200 hover:border-cvt-cyan hover:shadow-md transition-all duration-300 flex items-center justify-center group-hover:-translate-y-1 mb-3 relative overflow-hidden">
+                                <div className={`absolute top-0 left-0 w-1 h-full ${item.id % 2 === 0 ? 'bg-orange-500' : 'bg-cvt-blue'} transition-all duration-300 group-hover:w-full opacity-10 group-hover:opacity-100`}></div>
 
-                            {/* Card Box */}
-                            <div className="w-full aspect-square bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center border border-gray-100 group-hover:border-cvt-cyan/30 group-hover:-translate-y-1">
-                                <div className={`${item.color} opacity-80 group-hover:opacity-100 group-hover:scale-110 transition duration-300`}>
+                                <div className={`${item.color} z-10 group-hover:text-white transition duration-300 transform group-hover:scale-110`}>
                                     {item.icon}
                                 </div>
                             </div>
+
+                            {/* Label */}
+                            <span className="text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-wider group-hover:text-cvt-blue transition text-center">
+                                {item.label}
+                            </span>
                         </div>
                     ))}
                 </div>
