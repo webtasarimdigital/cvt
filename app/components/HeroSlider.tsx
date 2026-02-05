@@ -2,23 +2,25 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { FaChevronLeft, FaChevronRight, FaArrowRight } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaArrowRight, FaShip, FaPlane, FaTruck, FaTrain } from "react-icons/fa";
 
 // Data Structure
 const sliderData = [
     {
         id: "air",
         title: "Air Transport",
+        icon: <FaPlane />,
         description: "Cvtlog Logistics is a full service freight forwarder offering import and export services from/to Turkey. With an experience of over 25 years we will offer you innovative, competitive and cost effective logistics solutions.",
         images: [
-            "/air_transport_flight.png", // Placeholder - need to map actual filenames
+            "/air_transport_flight.png",
             "/air_transport_loading.png",
             "/air_transport_fleet.png",
         ],
     },
     {
         id: "cargo",
-        title: "Cargo Transport",
+        title: "Sea Transport",
+        icon: <FaShip />,
         description: "Comprehensive sea freight solutions for global trade. Whether FCL or LCL, we ensure your goods reach their destination safely and on time.",
         images: [
             "/ocean_transport_ship.png",
@@ -28,7 +30,8 @@ const sliderData = [
     },
     {
         id: "trucks",
-        title: "Trucks Transport",
+        title: "Road Transport",
+        icon: <FaTruck />,
         description: "Reliable road transport services across Europe and Asia. Our modern fleet ensures efficient and secure delivery of your cargo.",
         images: [
             "/road_transport_highway.png",
@@ -38,7 +41,8 @@ const sliderData = [
     },
     {
         id: "train",
-        title: "Train Transport",
+        title: "Rail Transport",
+        icon: <FaTrain />,
         description: "Eco-friendly and cost-effective rail transport solutions. Connecting major industrial hubs with seamless railway logistics.",
         images: [
             "/rail_transport_train.png",
@@ -52,7 +56,7 @@ export default function HeroSlider() {
     const [activeCategory, setActiveCategory] = useState(0);
     const [subIndices, setSubIndices] = useState([0, 0, 0, 0]);
 
-    // Auto-rotate sub-images every 5 seconds
+    // Auto-rotate sub-images 
     useEffect(() => {
         const interval = setInterval(() => {
             setSubIndices((prev) => {
@@ -64,6 +68,14 @@ export default function HeroSlider() {
         }, 5000);
         return () => clearInterval(interval);
     }, [activeCategory]);
+
+    // Auto-rotate Categories
+    useEffect(() => {
+        const categoryInterval = setInterval(() => {
+            setActiveCategory((prev) => (prev === sliderData.length - 1 ? 0 : prev + 1));
+        }, 8000);
+        return () => clearInterval(categoryInterval);
+    }, []);
 
     const handleCategoryChange = (direction: "prev" | "next") => {
         if (direction === "prev") {
@@ -77,134 +89,118 @@ export default function HeroSlider() {
     const currentImageIndex = subIndices[activeCategory];
 
     return (
-        <div className="relative h-screen w-full overflow-hidden bg-white text-gray-800">
+        <div className="relative h-screen w-full bg-slate-50 overflow-hidden flex flex-col md:flex-row">
 
-            {/* Right Side Image Area */}
-            <div className="absolute top-0 right-0 w-full h-full md:w-[65%] z-0">
+            {/* Left Content Area */}
+            <div className="relative z-20 w-full md:w-[45%] h-full flex items-center justify-center pl-8 md:pl-20 pr-4 bg-white">
+                {/* Curve Overlap for Desktop */}
+                <div className="absolute top-0 right-[-100px] h-full w-[200px] bg-white hidden md:block"
+                    style={{ clipPath: "ellipse(60% 100% at 30% 50%)" }}></div>
+
+                <div className="flex flex-col gap-6 max-w-lg z-10 animate-fade-in-up">
+                    <div className="flex items-center gap-3 text-cvt-cyan font-bold tracking-widest uppercase text-sm">
+                        <span className="p-2 bg-cvt-cyan/10 rounded-lg text-lg">
+                            {currentCategory.icon}
+                        </span>
+                        LOGISTICS SERVICES
+                    </div>
+
+                    <h1 className="text-5xl md:text-6xl font-extrabold text-cvt-blue leading-tight">
+                        {currentCategory.title}
+                    </h1>
+
+                    <p className="text-gray-600 text-lg leading-relaxed">
+                        {currentCategory.description}
+                    </p>
+
+                    <div className="flex gap-4 mt-4">
+                        <button className="bg-cvt-cyan text-cvt-dark px-8 py-4 rounded-sm font-bold hover:bg-cvt-blue hover:text-white transition flex items-center gap-2 uppercase tracking-wide">
+                            Detailed Info <FaChevronRight size={12} />
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* Right Image Area */}
+            <div className="relative w-full md:w-[65%] h-full bg-gray-900 overflow-hidden -ml-[10%] clip-path-slant md:clip-path-none">
                 {currentCategory.images.map((img, idx) => (
                     <div
                         key={`${currentCategory.id}-${idx}`}
                         className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === currentImageIndex ? "opacity-100" : "opacity-0"
                             }`}
                     >
-                        {/* Fallback for missing images during dev */}
-                        <div className={`w-full h-full relative bg-gray-200`}>
-                            <Image
-                                src={img} // Note: These images need to be in public folder
-                                alt={currentCategory.title}
-                                fill
-                                className="object-cover"
-                                priority
-                                onError={(e) => {
-                                    // Fallback if image not found
-                                    e.currentTarget.style.display = "none";
-                                }}
-                            />
-                        </div>
-                        {/* Dark Gradient Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/30" />
+                        <Image
+                            src={img}
+                            alt={currentCategory.title}
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                        {/* Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-transparent to-black/40 md:via-transparent md:from-white/5" />
                     </div>
                 ))}
+
+                {/* Sub-Image Indicators (Dots on Image) */}
+                <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex gap-3 z-30">
+                    {currentCategory.images.map((_, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => {
+                                const newIndices = [...subIndices];
+                                newIndices[activeCategory] = idx;
+                                setSubIndices(newIndices);
+                            }}
+                            className={`transition-all duration-300 rounded-full shadow-lg ${idx === currentImageIndex
+                                    ? "bg-cvt-cyan w-10 h-3"
+                                    : "bg-white/60 w-3 h-3 hover:bg-white"
+                                }`}
+                        />
+                    ))}
+                </div>
             </div>
 
-            {/* Curved Divider (SVG Overlay) */}
-            <div className="absolute top-0 right-0 w-full h-full pointer-events-none z-10 hidden md:block">
-                <svg
-                    viewBox="0 0 100 100"
-                    className="absolute top-0 left-0 h-full w-auto max-w-[50%]"
-                    preserveAspectRatio="none"
-                    style={{ transform: "scaleX(1.5)" }}
-                >
-                    <path d="M0 0 V100 C60 100 80 0 0 0 Z" fill="white" />
-                    {/* Attempting a generous curve: M0 0 (tl) V100 (bl) .. curve back to top */}
-                    {/* Actually, let's try a standard curve shape */}
-                </svg>
-                {/* Better approach: A big white shape on the left */}
-                <div className="absolute top-0 left-0 w-[45%] h-full bg-white transform skew-x-12 origin-top-left -translate-x-20 z-10 hidden lg:block"></div>
-                <div className="absolute top-0 left-0 w-[40%] h-full bg-white z-10 hidden lg:block"></div>
-                {/* The curve */}
-                <div
-                    className="absolute top-0 left-[40%] h-full w-[20vh] bg-white z-10 hidden lg:block"
-                    style={{
-                        borderRadius: "0 50% 50% 0 / 0 100% 100% 0",
-                        transform: "scaleX(2)"
-                    }}
-                ></div>
-            </div>
+            {/* Global Navigation Arrows (Edge to Edge) */}
+            <button
+                onClick={() => handleCategoryChange("prev")}
+                className="absolute top-1/2 left-4 md:left-10 transform -translate-y-1/2 z-40 w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white flex items-center justify-center hover:bg-cvt-cyan hover:border-cvt-cyan transition shadow-lg group"
+            >
+                <FaChevronLeft className="group-hover:-translate-x-1 transition" size={20} />
+            </button>
+
+            <button
+                onClick={() => handleCategoryChange("next")}
+                className="absolute top-1/2 right-4 md:right-10 transform -translate-y-1/2 z-40 w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white flex items-center justify-center hover:bg-cvt-cyan hover:border-cvt-cyan transition shadow-lg group"
+            >
+                <FaChevronRight className="group-hover:translate-x-1 transition" size={20} />
+            </button>
 
 
-            {/* Content Area */}
-            <div className="absolute inset-0 z-20 container mx-auto px-4 flex items-center">
-                <div className="md:w-1/2 lg:w-2/5 flex flex-col gap-6 pt-20">
-                    {/* Category Label */}
-                    <h4 className="text-cvt-cyan font-bold tracking-widest uppercase text-sm border-b border-gray-200 pb-2 w-max text-shadow-sm md:text-shadow-none">
-                        LOGISTICS SERVICES
-                    </h4>
-
-                    {/* Title */}
-                    <h1 className="text-5xl md:text-6xl font-extrabold text-cvt-blue leading-tight">
-                        {currentCategory.title}
-                    </h1>
-
-                    {/* Description */}
-                    <p className="text-gray-600 text-lg leading-relaxed max-w-md bg-white/80 p-4 rounded-lg md:bg-transparent md:p-0">
-                        {currentCategory.description}
-                    </p>
-
-                    {/* CTA */}
-                    <div className="flex gap-4 mt-4">
-                        <button className="bg-cvt-cyan text-cvt-dark px-8 py-3 rounded font-bold hover:bg-cvt-blue hover:text-white transition flex items-center gap-2">
-                            DETAILED INFO <FaChevronRight size={12} />
-                        </button>
-                    </div>
-
-                    {/* Slider Controls */}
-                    <div className="mt-12 flex items-center gap-4">
-                        <button
-                            onClick={() => handleCategoryChange("prev")}
-                            className="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:bg-cvt-cyan hover:border-cvt-cyan hover:text-white transition"
-                        >
-                            <FaChevronLeft />
-                        </button>
-                        <button
-                            onClick={() => handleCategoryChange("next")}
-                            className="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:bg-cvt-cyan hover:border-cvt-cyan hover:text-white transition"
-                        >
-                            <FaChevronRight />
-                        </button>
+            {/* Modern Badges (Right Side) */}
+            <div className="absolute top-1/3 right-0 z-40 hidden md:flex flex-col gap-4 items-end">
+                {/* Years Experience */}
+                <div className="bg-cvt-cyan text-cvt-dark py-4 px-6 rounded-l-lg shadow-xl transform translate-x-2 hover:translate-x-0 transition duration-300 flex items-center gap-4 cursor-default w-64">
+                    <div className="text-4xl font-black">25</div>
+                    <div className="flex flex-col leading-none">
+                        <span className="font-bold text-lg">YEARS</span>
+                        <span className="text-xs uppercase tracking-wider opacity-80">Of Experience</span>
                     </div>
                 </div>
 
-                {/* Right Side Experience Circle */}
-                <div className="absolute bottom-10 right-[25%] z-30 hidden md:flex flex-col items-center justify-center w-40 h-40 bg-cvt-cyan rounded-full text-white shadow-2xl animate-bounce-slow">
-                    <span className="text-5xl font-bold">25</span>
-                    <span className="text-xs uppercase font-semibold text-center leading-tight">Years<br />Experience</span>
-                </div>
-
-                {/* Right Side Offer Circle */}
-                <div className="absolute bottom-10 right-10 z-30 flex flex-col items-center justify-center w-32 h-32 bg-orange-500 rounded-full text-white shadow-xl cursor-pointer hover:scale-110 transition">
-                    <span className="text-4xl"><FaArrowRight className="-rotate-45" /></span>
-                    <span className="text-xs font-bold text-center leading-tight mt-1">Get<br />Quote</span>
+                {/* Get Quote */}
+                <div className="bg-[#1b2e38] text-white py-4 px-6 rounded-l-lg shadow-xl transform translate-x-2 hover:translate-x-0 transition duration-300 flex items-center gap-4 cursor-pointer group w-64 border-l-4 border-orange-500">
+                    <div className="bg-orange-500 p-2 rounded-full group-hover:rotate-45 transition duration-500">
+                        <FaArrowRight size={16} />
+                    </div>
+                    <div className="flex flex-col leading-none">
+                        <span className="font-bold text-lg">GET QUOTE</span>
+                        <span className="text-xs uppercase tracking-wider opacity-80">Fast Response</span>
+                    </div>
                 </div>
             </div>
 
-            {/* Sub-Image Indicators */}
-            <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30 flex gap-2">
-                {currentCategory.images.map((_, idx) => (
-                    <button
-                        key={idx}
-                        onClick={() => {
-                            const newIndices = [...subIndices];
-                            newIndices[activeCategory] = idx;
-                            setSubIndices(newIndices);
-                        }}
-                        className={`w-3 h-3 rounded-full transition-all ${idx === currentImageIndex
-                                ? "bg-cvt-cyan w-8"
-                                : "bg-white/50 hover:bg-white"
-                            }`}
-                    />
-                ))}
-            </div>
+            {/* Bottom Curve SVG to mimic Kinay if needed, or simple curve */}
+            {/* We used a CSS clip-path simulation with the overlay div above for simplicity and cleanliness */}
 
         </div>
     );

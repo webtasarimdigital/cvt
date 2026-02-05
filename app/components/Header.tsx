@@ -31,7 +31,7 @@ export default function Header() {
             </div>
 
             {/* Main Navigation */}
-            <div className="bg-white/10 backdrop-blur-md shadow-lg">
+            <div className="bg-[#1b2e38] backdrop-blur-md shadow-lg">
                 <div className="container mx-auto px-4 py-4 flex justify-between items-center">
                     {/* Logo */}
                     <Link href="/" className="relative h-12 w-48">
