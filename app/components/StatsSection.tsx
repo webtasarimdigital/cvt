@@ -58,47 +58,47 @@ export default function StatsSection() {
     }, [isVisible]);
 
     return (
-        <section ref={sectionRef} className="py-12 bg-white">
+        <section ref={sectionRef} className="py-8 bg-white border-b border-gray-100">
             <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {stats.map((stat, index) => (
-                        <div key={index} className="flex flex-col items-center justify-center p-4 group">
+                        <div key={index} className="flex flex-col items-center justify-center p-2 group cursor-default">
                             {/* Circular Design */}
-                            <div className="relative w-40 h-40 flex items-center justify-center">
-                                {/* Background Circle */}
-                                <svg className="absolute top-0 left-0 w-full h-full transform -rotate-90">
+                            <div className="relative w-32 h-32 flex items-center justify-center">
+                                {/* SVG Wrapper that rotates on hover */}
+                                <svg className="absolute top-0 left-0 w-full h-full transform -rotate-90 group-hover:animate-[spin_4s_linear_infinite] transition-all duration-700">
                                     <circle
-                                        cx="80"
-                                        cy="80"
-                                        r="70"
+                                        cx="64"
+                                        cy="64"
+                                        r="58"
                                         className="stroke-gray-100"
-                                        strokeWidth="8"
+                                        strokeWidth="4"
                                         fill="transparent"
                                     />
                                     {/* Progress Circle - Animated */}
                                     <circle
-                                        cx="80"
-                                        cy="80"
-                                        r="70"
+                                        cx="64"
+                                        cy="64"
+                                        r="58"
                                         className={`stroke-current ${index % 2 === 0 ? 'text-cvt-cyan' : 'text-cvt-blue'} transition-all duration-[2000ms] ease-out`}
-                                        strokeWidth="8"
+                                        strokeWidth="4"
                                         fill="transparent"
-                                        strokeDasharray={440} // 2 * PI * 70
-                                        strokeDashoffset={isVisible ? 0 : 440}
+                                        strokeDasharray={365} // 2 * PI * 58
+                                        strokeDashoffset={isVisible ? 0 : 365}
                                         strokeLinecap="round"
                                     />
                                 </svg>
 
-                                {/* Inner Text */}
+                                {/* Inner Text - Static (does not rotate) */}
                                 <div className="z-10 text-center flex flex-col items-center">
-                                    <span className={`text-4xl font-extrabold ${stat.color}`}>
+                                    <span className={`text-3xl font-extrabold ${stat.color}`}>
                                         {counts[index]}{stat.suffix}
                                     </span>
                                 </div>
                             </div>
 
                             {/* Label outside circle */}
-                            <div className="mt-4 text-lg font-bold text-gray-700 uppercase tracking-widest text-center">
+                            <div className="mt-3 text-sm font-bold text-gray-600 uppercase tracking-widest text-center group-hover:text-cvt-cyan transition-colors">
                                 {stat.label}
                             </div>
                         </div>
