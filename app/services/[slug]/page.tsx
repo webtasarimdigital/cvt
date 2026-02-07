@@ -135,7 +135,7 @@ export default function ServiceDetail() {
                         )}
 
                         <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100 mt-8">
-                            <h3 className="text-xl font-bold text-gray-900 mb-6">Key Features</h3>
+                            <h3 className="text-xl font-bold text-gray-900 mb-6">{t.services.keyFeatures}</h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {serviceData.features.map((feature: string, idx: number) => (
                                     <div key={idx} className="flex items-center gap-3">
@@ -151,13 +151,13 @@ export default function ServiceDetail() {
                             <div className="absolute inset-0 bg-cvt-cyan/10 translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                             <div className="relative z-10">
                                 <h3 className="text-2xl font-bold mb-2">{t.hero.getQuote}</h3>
-                                <p className="text-gray-400">Ready to move your cargo? Get a fast quote today.</p>
+                                <p className="text-gray-400">{t.services.ctaText}</p>
                             </div>
                             <Link
                                 href="/contact"
                                 className="relative z-10 bg-cvt-cyan text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-cvt-cyan transition shadow-lg"
                             >
-                                Contact Us
+                                {t.services.ctaButton}
                             </Link>
                         </div>
                     </div>
@@ -184,7 +184,7 @@ export default function ServiceDetail() {
                                         <div>
                                             <h4 className="font-bold text-gray-800 group-hover:text-cvt-cyan transition">{service.title}</h4>
                                             <span className="text-xs text-gray-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                                                View Detail <FaArrowRight size={10} />
+                                                {t.services.viewDetail} <FaArrowRight size={10} />
                                             </span>
                                         </div>
                                     </Link>
