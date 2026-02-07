@@ -163,11 +163,12 @@ export default function HeroSlider() {
                         LOGISTICS SERVICES
                     </div>
 
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-cvt-blue leading-tight">
+
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-cvt-blue leading-tight min-h-[2.5em] flex items-center">
                         {currentCategory.title}
                     </h1>
 
-                    <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-md md:max-w-none">
+                    <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-md md:max-w-none min-h-[120px] md:min-h-[180px] flex items-center">
                         {currentCategory.description}
                     </p>
 
@@ -181,8 +182,8 @@ export default function HeroSlider() {
 
             {/* Right Image Area */}
             <div
-                className="relative w-full md:w-[55%] h-[40vh] md:h-full bg-gray-900 overflow-hidden ml-0 md:-ml-0 cursor-grab active:cursor-grabbing order-2"
-                style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }} // Simplified for mobile default, overridden via CSS if needed, but actually the ellipse looked nice on Desktop.
+                className="relative w-full md:w-[60%] h-[40vh] md:h-full bg-gray-900 overflow-hidden ml-0 md:-ml-24 cursor-grab active:cursor-grabbing order-2"
+                style={{ clipPath: "ellipse(80% 100% at 80% 50%)" }} // Restored curved design
             >
                 {/* Desktop shaped clip-path via inline style conditioned, or just use a full rect on mobile and shape on desktop via duplicate div or media query? 
                     Let's just use a class and custom style.

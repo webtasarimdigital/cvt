@@ -6,11 +6,11 @@ import Footer from "../../components/Footer";
 import WhatsAppButton from "../../components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
-import { FaCalendar, FaArrowLeft, FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { FaCalendar, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useParams, notFound } from "next/navigation";
 
 export default function BlogPost() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const params = useParams();
     const slug = params.slug as string;
 
@@ -21,6 +21,10 @@ export default function BlogPost() {
     if (!post) {
         notFound();
     }
+
+    // Filter out the current post
+    // @ts-ignore
+    const otherPosts = t.blog.posts?.filter((p: any) => p.id !== post.id) || [];
 
     return (
         <main className="min-h-screen bg-white">
@@ -71,22 +75,42 @@ export default function BlogPost() {
                     </div>
                 </article>
 
-                {/* Share */}
-                <div className="mt-16 pt-8 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-6">
-                    <span className="font-bold text-gray-900">Share this article:</span>
-                    <div className="flex gap-4">
-                        <button className="w-10 h-10 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:scale-110 transition">
-                            <FaFacebookF />
-                        </button>
-                        <button className="w-10 h-10 rounded-full bg-[#1DA1F2] text-white flex items-center justify-center hover:scale-110 transition">
-                            <FaTwitter />
-                        </button>
-                        <button className="w-10 h-10 rounded-full bg-[#0A66C2] text-white flex items-center justify-center hover:scale-110 transition">
-                            <FaLinkedinIn />
-                        </button>
+                {/* Related Posts */}
+                {otherPosts.length > 0 && (
+                    <div className="mt-20 pt-12 border-t border-gray-100">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-8">{language === 'tr' ? 'Diğer Yazılarımız' : 'Other Posts'}</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            {otherPosts.slice(0, 3).map((relatedPost) => (
+                                <Link href={`/blog/${relatedPost.slug}`} key={relatedPost.id} className="group cursor-pointer">
+                                    <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 h-full flex flex-col">
+                                        <div className="relative h-48 overflow-hidden">
+                                            <Image
+                                                src={relatedPost.image}
+                                                alt={relatedPost.title}
+                                                fill
+                                                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                            />
+                                        </div>
+                                        <div className="p-6 flex flex-col flex-grow">
+                                            <div className="flex items-center text-xs text-gray-500 mb-3 space-x-4">
+                                                <span className="flex items-center"><FaCalendar className="mr-1.5 text-cvt-cyan" /> {relatedPost.date}</span>
+                                            </div>
+                                            <h4 className="text-lg font-bold text-gray-800 mb-3 group-hover:text-cvt-cyan transition-colors line-clamp-2">
+                                                {relatedPost.title}
+                                            </h4>
+                                            <p className="text-gray-600 text-sm line-clamp-2 mb-4 flex-grow">
+                                                {relatedPost.excerpt}
+                                            </p>
+                                            <span className="text-cvt-cyan text-sm font-bold flex items-center mt-auto">
+                                                {t.blog.readMore} <FaArrowRight className="ml-2 text-xs group-hover:translate-x-1 transition-transform" />
+                                            </span>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
                     </div>
-                </div>
-
+                )}
             </div>
 
             <WhatsAppButton />

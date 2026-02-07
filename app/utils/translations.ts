@@ -103,6 +103,12 @@ export const translations = {
                 }
             },
         },
+        servicesPage: {
+            title: "OUR SERVICES",
+            subtitle: "We provide comprehensive logistics solutions for your business.",
+            introTitle: "World-Class Logistics Services",
+            introText: "At Cvtlog, we understand that every shipment is unique. That's why we offer a wide range of logistics services tailored to meet your specific needs. From road and sea transport to air and rail freight, our global network and experienced team ensure that your cargo reaches its destination safely, on time, and within budget.",
+        },
         blog: {
             title: "Latest News & Insights",
             subtitle: "Stay updated with the latest trends in logistics.",
@@ -292,6 +298,12 @@ export const translations = {
                     features: ["Blok Tren Hizmetleri", "Intermodal Çözümler", "Dökme Yük", "Çevre Dostu Taşıma", "Sınır Ötesi Lojistik"]
                 }
             },
+        },
+        servicesPage: {
+            title: "HİZMETLERİMİZ",
+            subtitle: "İşletmeniz için kapsamlı lojistik çözümleri sunuyoruz.",
+            introTitle: "Dünya Standartlarında Lojistik Hizmetleri",
+            introText: "Cvtlog olarak her sevkiyatın benzersiz olduğunu anlıyoruz. Bu nedenle, özel ihtiyaçlarınızı karşılamak için uyarlanmış geniş bir lojistik hizmetleri yelpazesi sunuyoruz. Karayolu ve denizyolu taşımacılığından havayolu ve demiryolu taşımacılığına kadar, küresel ağımız ve deneyimli ekibimiz kargonuzun hedefine güvenli, zamanında ve bütçe dahilinde ulaşmasını sağlar.",
         },
         blog: {
             title: "Haberler & İçgörüler",

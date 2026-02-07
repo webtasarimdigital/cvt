@@ -50,18 +50,31 @@ export default function ServicesPage() {
         <main className="min-h-screen bg-gray-50">
             <Header />
 
-            {/* Page Header */}
-            <div className="bg-[#1b2e38] text-white py-20 text-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-black/20 z-0"></div>
-                <div className="relative z-10 container mx-auto px-4">
+            {/* Hero Section */}
+            <div className="relative pt-40 pb-20 md:pt-48 md:pb-32 bg-[#1b2e38] text-white">
+                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url('/road_transport_highway.png')", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+                <div className="container mx-auto px-4 relative z-10 text-center">
                     <h1 className="text-4xl md:text-5xl font-extrabold uppercase tracking-wide mb-4">
-                        {t.services.title}
+                        {t.servicesPage.title}
                     </h1>
-                    <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                        {t.services.subtitle}
+                    <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                        {t.servicesPage.subtitle}
                     </p>
                 </div>
             </div>
+
+            {/* Intro Section */}
+            <section className="py-16 bg-white">
+                <div className="container mx-auto px-4 text-center">
+                    <h2 className="text-3xl font-bold text-[#1b2e38] mb-6 max-w-3xl mx-auto">
+                        {t.servicesPage.introTitle}
+                    </h2>
+                    <p className="text-gray-600 text-lg leading-relaxed max-w-4xl mx-auto">
+                        {t.servicesPage.introText}
+                    </p>
+                    <div className="h-1 w-24 bg-cvt-cyan mx-auto mt-8 rounded-full"></div>
+                </div>
+            </section>
 
             {/* Services Grid */}
             <div className="container mx-auto px-4 py-16">
