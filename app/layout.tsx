@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "CVT Logistics - Global Logistics & Transport Services",
   description: "Reliable road, sea, air, and rail transport solutions connecting continents.",
+  verification: {
+    google: "3MG9_FSEpOEMpJKKdoZ_cOqDAl5fgWXt7HLCAEK8OMM",
+  },
 };
 
 export default function RootLayout({
