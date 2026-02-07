@@ -98,7 +98,12 @@ export default function Footer() {
                                 </div>
                                 <div>
                                     <h4 className="text-white font-bold mb-1">Head Office</h4>
-                                    <p className="text-sm">Istanbul, Turkey</p>
+                                    <p className="text-sm">
+                                        CVTLOG DIS TICARET LTD. STI.<br />
+                                        Cevizli Mah. Mustafa Kemal Cad.<br />
+                                        Hukukcular Towers A Blok No:66 A , D.111<br />
+                                        PK:34865 Kartal – Istanbul - Turkey
+                                    </p>
                                 </div>
                             </div>
 
@@ -108,7 +113,8 @@ export default function Footer() {
                                 </div>
                                 <div>
                                     <h4 className="text-white font-bold mb-1">Phone</h4>
-                                    <p className="text-sm">+90 212 355 06 00</p>
+                                    <p className="text-sm">+90 532 303 90 48</p>
+                                    <p className="text-sm">+90 216 475 55 92</p>
                                 </div>
                             </div>
 
