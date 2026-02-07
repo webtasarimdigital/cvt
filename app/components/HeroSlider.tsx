@@ -133,20 +133,11 @@ export default function HeroSlider() {
     const currentImageIndex = subIndices[activeCategory];
 
     return (
-        <div
-            className="relative h-screen w-full bg-slate-50 overflow-hidden flex flex-col md:flex-row cursor-grab active:cursor-grabbing select-none"
-            onTouchStart={onTouchStart}
-            onTouchMove={onTouchMove}
-            onTouchEnd={onTouchEnd}
-            onMouseDown={onMouseDown}
-            onMouseMove={onMouseMove}
-            onMouseUp={onMouseUp}
-            onMouseLeave={onMouseUp}
-        >
+        <div className="relative h-screen w-full bg-slate-50 overflow-hidden flex flex-col md:flex-row select-none">
 
             {/* Left Content Area - Widened to 55% to push image right */}
-            <div className="relative z-20 w-full md:w-[55%] h-full flex items-center justify-center pl-8 md:pl-20 pr-4 bg-white pointer-events-none">
-                <div className="flex flex-col gap-6 max-w-xl z-10 animate-fade-in-up pt-20 pointer-events-auto">
+            <div className="relative z-20 w-full md:w-[55%] h-full flex items-center justify-center pl-8 md:pl-20 pr-4 bg-white">
+                <div className="flex flex-col gap-6 max-w-xl z-10 animate-fade-in-up pt-20">
                     <div className="flex items-center gap-3 text-cvt-cyan font-bold tracking-widest uppercase text-sm">
                         <span className="p-2 bg-cvt-cyan/10 rounded-lg text-lg">
                             {currentCategory.icon}
