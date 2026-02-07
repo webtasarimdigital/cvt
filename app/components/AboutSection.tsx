@@ -11,7 +11,7 @@ export default function AboutSection() {
     return (
         <section className="py-24 bg-white relative overflow-hidden">
             <div className="container mx-auto px-4">
-                <div className="flex flex-col lg:flex-row gap-16 items-center">
+                <div className="flex flex-col-reverse lg:flex-row gap-16 items-center">
 
                     {/* Left Column: Image Collage */}
                     <div className="w-full lg:w-1/2 relative h-[500px] lg:h-[600px]">

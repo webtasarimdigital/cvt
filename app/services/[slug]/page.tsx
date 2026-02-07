@@ -32,7 +32,15 @@ export default function ServiceDetail() {
         rail: "/service-rail.png",
     };
 
+    const serviceSecondaryImages: Record<string, string[]> = {
+        road: ["/road_transport_fleet.png", "/road_transport_loading.png"],
+        sea: ["/ocean_transport_containers.png", "/ocean_transport_port.png"],
+        air: ["/air_transport_loading.png", "/air_transport_fleet.png"],
+        rail: ["/rail_transport_train.png", "/rail_transport_motion.png"],
+    };
+
     const heroImage = heroImages[slug];
+    const secondaryImages = serviceSecondaryImages[slug] || [];
 
     // Navigation items for "Other Services"
     const otherServices = validSlugs
@@ -93,9 +101,38 @@ export default function ServiceDetail() {
                         <h2 className="text-3xl font-bold text-gray-900 border-l-4 border-cvt-cyan pl-6">
                             {t.services.subtitle}
                         </h2>
-                        <p className="text-gray-600 text-lg leading-relaxed">
-                            {serviceData.description}
-                        </p>
+
+                        {/* Rendering Content with Embedded Images */}
+                        {serviceData.content ? (
+                            <div className="space-y-8">
+                                <p className="text-gray-600 text-lg leading-relaxed">
+                                    {serviceData.content[0]}
+                                </p>
+
+                                {/* Chic Image Grid */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    {secondaryImages.map((img, idx) => (
+                                        <div key={idx} className="relative h-64 rounded-2xl overflow-hidden shadow-lg group hover:shadow-2xl transition-all duration-500">
+                                            <Image
+                                                src={img}
+                                                alt={`${slug} detail ${idx}`}
+                                                fill
+                                                className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <p className="text-gray-600 text-lg leading-relaxed">
+                                    {serviceData.content[1]}
+                                </p>
+                            </div>
+                        ) : (
+                            <p className="text-gray-600 text-lg leading-relaxed">
+                                {serviceData.description}
+                            </p>
+                        )}
 
                         <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100 mt-8">
                             <h3 className="text-xl font-bold text-gray-900 mb-6">Key Features</h3>
