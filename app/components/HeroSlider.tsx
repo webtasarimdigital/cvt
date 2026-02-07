@@ -96,6 +96,19 @@ export default function HeroSlider() {
     // Drag / Swipe Logic
     const minSwipeDistance = 50;
 
+    const handleSubImageChange = (direction: "prev" | "next") => {
+        setSubIndices((prev) => {
+            const newIndices = [...prev];
+            const currentImages = sliderData[activeCategory].images;
+            if (direction === "prev") {
+                newIndices[activeCategory] = (newIndices[activeCategory] - 1 + currentImages.length) % currentImages.length;
+            } else {
+                newIndices[activeCategory] = (newIndices[activeCategory] + 1) % currentImages.length;
+            }
+            return newIndices;
+        });
+    };
+
     const onTouchStart = (e: React.TouchEvent) => {
         setTouchEnd(null);
         setTouchStart(e.targetTouches[0].clientX);
@@ -110,8 +123,8 @@ export default function HeroSlider() {
         const distance = touchStart - touchEnd;
         const isLeftSwipe = distance > minSwipeDistance;
         const isRightSwipe = distance < -minSwipeDistance;
-        if (isLeftSwipe) handleCategoryChange("next");
-        if (isRightSwipe) handleCategoryChange("prev");
+        if (isLeftSwipe) handleSubImageChange("next");
+        if (isRightSwipe) handleSubImageChange("prev");
     };
 
     const onMouseDown = (e: React.MouseEvent) => {
@@ -131,8 +144,8 @@ export default function HeroSlider() {
                 const distance = touchStart - touchEnd;
                 const isLeftSwipe = distance > minSwipeDistance;
                 const isRightSwipe = distance < -minSwipeDistance;
-                if (isLeftSwipe) handleCategoryChange("next");
-                if (isRightSwipe) handleCategoryChange("prev");
+                if (isLeftSwipe) handleSubImageChange("next");
+                if (isRightSwipe) handleSubImageChange("prev");
             }
             setTouchStart(null);
             setTouchEnd(null);
@@ -154,7 +167,7 @@ export default function HeroSlider() {
         <div className="relative min-h-[100dvh] w-full bg-slate-50 overflow-hidden flex flex-col md:flex-row select-none">
 
             {/* Left Content Area */}
-            <div className="relative z-20 w-full md:w-[52%] flex items-center justify-center px-6 md:pl-20 md:pr-4 bg-white pt-2 md:pt-0 pointer-events-none md:pointer-events-auto shrink-0 order-2 md:order-1">
+            <div className="relative z-20 w-full md:w-[52%] flex flex-col justify-start md:justify-center items-start md:items-center px-6 md:pl-20 md:pr-4 bg-white pt-1 md:pt-0 pointer-events-none md:pointer-events-auto shrink-0 order-2 md:order-1">
                 <div className="flex flex-col gap-4 md:gap-6 max-w-xl z-10 animate-fade-in-up pointer-events-auto py-2 md:py-0">
                     <div className="flex items-center gap-3 text-cvt-cyan font-bold tracking-widest uppercase text-xs md:text-sm">
                         <span className="p-2 bg-cvt-cyan/10 rounded-lg text-lg">
@@ -217,6 +230,23 @@ export default function HeroSlider() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent md:bg-gradient-to-r md:from-black/20" />
                     </div>
                 ))}
+
+                {/* Mobile Navigation Arrows (Inside Image) */}
+                <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 w-full px-4 flex justify-between z-40 pointer-events-none md:hidden gap-4">
+                    <button
+                        onClick={(e) => { e.stopPropagation(); handleCategoryChange("prev"); }}
+                        className="w-10 h-10 bg-white/90 text-cvt-blue rounded-full shadow-lg flex items-center justify-center active:scale-95 backdrop-blur-md pointer-events-auto hover:bg-white transition"
+                    >
+                        <FaChevronLeft size={20} />
+                    </button>
+
+                    <button
+                        onClick={(e) => { e.stopPropagation(); handleCategoryChange("next"); }}
+                        className="w-10 h-10 bg-white/90 text-cvt-blue rounded-full shadow-lg flex items-center justify-center active:scale-95 backdrop-blur-md pointer-events-auto hover:bg-white transition"
+                    >
+                        <FaChevronRight size={20} />
+                    </button>
+                </div>
 
                 {/* Pagination Dots */}
                 <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-50 flex gap-3 pointer-events-auto">
