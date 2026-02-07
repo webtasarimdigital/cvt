@@ -3,35 +3,46 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
-
-const services = [
-    {
-        id: "air",
-        title: "Air Transport",
-        description: "Fast and reliable air freight solutions for your time-sensitive cargo worldwide.",
-        image: "/air_transport_flight.png"
-    },
-    {
-        id: "cargo",
-        title: "Cargo Transport",
-        description: "Comprehensive sea freight options ensuring your global trade keeps moving efficiently.",
-        image: "/ocean_transport_ship.png"
-    },
-    {
-        id: "trucks",
-        title: "Trucks Transport",
-        description: "Flexible road transport network connecting Europe and Asia with speed and security.",
-        image: "/road_transport_highway.png"
-    },
-    {
-        id: "train",
-        title: "Train Transport",
-        description: "Eco-friendly rail logistics offering the perfect balance of cost and transit time.",
-        image: "/rail_transport_train.png"
-    }
-];
+import { useLanguage } from "../context/LanguageContext";
 
 export default function ServicesSection() {
+    const { t } = useLanguage();
+
+    const services = [
+        {
+            id: "air",
+            title: t.services.air,
+            // @ts-ignore
+            description: t.services.details.air.description,
+            image: "/air_transport_flight.png",
+            link: "/services/air"
+        },
+        {
+            id: "sea",
+            title: t.services.sea,
+            // @ts-ignore
+            description: t.services.details.sea.description,
+            image: "/ocean_transport_ship.png",
+            link: "/services/sea"
+        },
+        {
+            id: "road",
+            title: t.services.road,
+            // @ts-ignore
+            description: t.services.details.road.description,
+            image: "/road_transport_highway.png",
+            link: "/services/road"
+        },
+        {
+            id: "rail",
+            title: t.services.rail,
+            // @ts-ignore
+            description: t.services.details.rail.description,
+            image: "/rail_transport_train.png",
+            link: "/services/rail"
+        }
+    ];
+
     return (
         <section className="py-24 bg-gray-50">
             <div className="container mx-auto px-4">
@@ -39,16 +50,17 @@ export default function ServicesSection() {
                 {/* Section Header */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-extrabold text-[#1b2e38] mb-4">
-                        Our Services
+                        {t.services.title}
                     </h2>
                     <p className="text-gray-500 max-w-2xl mx-auto text-lg">
-                        Tailored logistics solutions to meet your global transportation needs with precision and care.
+                        {t.services.subtitle}
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {services.map((service, index) => (
-                        <div
+                        <Link
+                            href={service.link}
                             key={index}
                             className="group relative h-[450px] w-full rounded-2xl overflow-hidden shadow-lg cursor-pointer transform transition-all duration-500 hover:shadow-2xl"
                         >
@@ -77,12 +89,12 @@ export default function ServicesSection() {
                                 </h3>
 
                                 {/* Description (Hidden visibly until hover pushes everything up, opacity fades in) */}
-                                <p className="text-gray-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                <p className="text-gray-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 line-clamp-4">
                                     {service.description}
                                 </p>
                             </div>
 
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>

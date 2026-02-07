@@ -52,24 +52,34 @@ export default function ServiceDetail() {
         <main className="min-h-screen bg-white">
             <Header />
 
-            {/* Hero Section */}
-            <div className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
+            {/* Hero Section - Redesigned */}
+            <div className="relative h-[80vh] w-full overflow-hidden flex items-end justify-start">
                 <Image
                     src={heroImage}
                     alt={serviceData.title}
                     fill
-                    className="object-cover"
+                    className="object-cover transform scale-105"
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 w-full p-8 md:p-16">
-                    <div className="container mx-auto">
-                        <span className="bg-cvt-cyan text-white px-4 py-1 rounded text-sm font-bold uppercase tracking-wider mb-4 inline-block">
+
+                {/* Modern Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1b2e38]/90 via-[#1b2e38]/20 to-transparent"></div>
+
+                {/* Stylish Content Box - Glassmorphism */}
+                <div className="relative z-10 container mx-auto px-6 pb-20 md:pb-32">
+                    <div className="max-w-4xl">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold uppercase tracking-widest mb-6 animate-fade-in-up">
+                            <span className="w-2 h-2 rounded-full bg-cvt-cyan"></span>
                             {t.services.title}
-                        </span>
-                        <h1 className="text-4xl md:text-6xl font-black text-white mb-4 max-w-3xl leading-tight">
-                            {serviceData.title}
+                        </div>
+
+                        <h1 className="text-5xl md:text-7xl font-black text-white leading-tight mb-6 drop-shadow-2xl animate-fade-in-up delay-100">
+                            {serviceData.title.split(' ').map((word: string, i: number) => (
+                                <span key={i} className="block">{word}</span>
+                            ))}
                         </h1>
+
+                        <div className="h-2 w-32 bg-cvt-cyan rounded-full animate-width-expand delay-300"></div>
                     </div>
                 </div>
             </div>

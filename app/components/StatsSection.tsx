@@ -1,15 +1,19 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-
-const stats = [
-    { label: "Years Experience", value: 25, suffix: "+", color: "text-cvt-blue" },
-    { label: "Countries Served", value: 28, suffix: "+", color: "text-cvt-cyan" },
-    { label: "Successful Deliveries", value: 20, suffix: "k+", color: "text-cvt-blue" },
-];
+import { useLanguage } from "../context/LanguageContext";
 
 export default function StatsSection() {
+    const { t } = useLanguage();
     const sectionRef = useRef<HTMLDivElement>(null);
+
+    // Move stats inside to use translations
+    const stats = [
+        { label: t.stats.years, value: 25, suffix: "+", color: "text-cvt-blue" },
+        { label: t.stats.countries, value: 28, suffix: "+", color: "text-cvt-cyan" },
+        { label: t.stats.deliveries, value: 20, suffix: "k+", color: "text-cvt-blue" },
+    ];
+
     const [counts, setCounts] = useState(stats.map(() => 0));
     const [isVisible, setIsVisible] = useState(false);
 
@@ -30,7 +34,31 @@ export default function StatsSection() {
         return () => observer.disconnect();
     }, []);
 
-    // ... (counter logic stays mostly same but ensure it runs)
+    // Counter animation logic
+    useEffect(() => {
+        if (!isVisible) return;
+
+        const intervals = stats.map((stat, index) => {
+            let start = 0;
+            const end = stat.value;
+            const duration = 2000; // 2 seconds
+            const incrementTime = duration / end;
+
+            return setInterval(() => {
+                start += 1;
+                setCounts((prev) => {
+                    const newCounts = [...prev];
+                    newCounts[index] = start;
+                    return newCounts;
+                });
+                if (start === end) clearInterval(intervals[index]);
+            }, incrementTime);
+        });
+
+        return () => intervals.forEach((interval) => clearInterval(interval));
+    }, [isVisible]); // Warning: logic dependency on stats implies stats should be memoized or ignored if constant. 
+    // Since t changes on language switch, this will re-run, which is actually good (re-renders labels).
+    // However, counters might re-animate. That's acceptable.
 
     return (
         <section ref={sectionRef} className="py-8 bg-white border-b border-gray-100">

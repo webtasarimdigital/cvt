@@ -3,8 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaChevronRight } from "react-icons/fa";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function AboutSection() {
+    const { t } = useLanguage();
+
     return (
         <section className="py-24 bg-white relative overflow-hidden">
             <div className="container mx-auto px-4">
@@ -58,27 +61,23 @@ export default function AboutSection() {
 
                     {/* Right Column: Content */}
                     <div className="w-full lg:w-1/2 flex flex-col gap-8">
-                        <h2 className="text-4xl lg:text-5xl font-extrabold text-[#1b2e38] leading-tight text-right lg:text-left">
-                            Doing it right,<br />
-                            keeping our promise,<br />
-                            <span className="text-cvt-cyan">moving with confidence.</span>
+                        <h2 className="text-4xl lg:text-5xl font-extrabold text-[#1b2e38] leading-tight text-right lg:text-left whitespace-pre-line">
+                            <span className="text-cvt-cyan">{t.aboutSection.title}</span>
                         </h2>
 
                         <div className="flex flex-col gap-6 text-gray-600 text-lg leading-relaxed text-justify lg:text-left">
                             <p>
-                                Cvtlog Logistics is a full service freight forwarder offering import and export services from/to Turkey.
-                                With an experience of over 25 years we will offer you innovative, competitive and cost effective logistics solutions.
+                                {t.aboutSection.description1}
                             </p>
 
                             <p className="text-sm border-l-4 border-cvt-cyan pl-4 italic">
-                                CVT LOGISTICS, adopts a customer-oriented approach where customers can easily convey their requests and complaints,
-                                handling them with objectivity, fairness, and confidentiality.
+                                {t.aboutSection.description2}
                             </p>
                         </div>
 
                         <div className="flex justify-end lg:justify-start">
-                            <Link href="#" className="group flex items-center gap-2 text-[#1b2e38] font-bold text-lg hover:text-cvt-cyan transition">
-                                About Us <span className="bg-[#1b2e38] group-hover:bg-cvt-cyan text-white p-2 rounded-full transition"><FaChevronRight size={12} /></span>
+                            <Link href="/about" className="group flex items-center gap-2 text-[#1b2e38] font-bold text-lg hover:text-cvt-cyan transition">
+                                {t.aboutSection.button} <span className="bg-[#1b2e38] group-hover:bg-cvt-cyan text-white p-2 rounded-full transition"><FaChevronRight size={12} /></span>
                             </Link>
                         </div>
                     </div>

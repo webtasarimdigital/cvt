@@ -84,29 +84,7 @@ export default function ContactPage() {
                         </div>
 
                         {/* Map Embed (Placeholder for now, or real if they have one. Using Google Maps Search link as embed tricky without API key, but we can try an iframe with address) */}
-                        <div className="w-full h-64 bg-gray-200 rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-                            <iframe
-                                width="100%"
-                                height="100%"
-                                frameBorder="0"
-                                style={{ border: 0 }}
-                                src={`https://www.google.com/maps/embed/v1/place?key=&q=Cevizli+Mah.+Mustafa+Kemal+Cad.+Hukukcular+Towers+Kartal+Istanbul`}
-                                allowFullScreen
-                            >
-                                {/* Note: Embedding Google Maps properly requires an API Key. 
-                                    For now, we can use a generic iframe or just a placeholder image.
-                                    Actually, the 'q' parameter works with the embed API but needs a key.
-                                    Let's use a simpler iframe openstreetmap or just a link.
-                                    Better yet, let's just put a static image or a "View on Maps" button if we don't have a key.
-                                    I'll stick to a simple placeholder message or remove the iframe to avoid "Development Purposes Only" watermark if no key.
-                                    Let's try standard embed link format which sometimes works for specific places. */}
-                            </iframe>
-                            <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                <a href="https://maps.google.com/?q=Cevizli+Mah.+Mustafa+Kemal+Cad.+Hukukcular+Towers+A+Blok+No:66+A+,+D.111+Kartal+Istanbul" target="_blank" className="underline hover:text-cvt-cyan">
-                                    View on Google Maps
-                                </a>
-                            </div>
-                        </div>
+
                     </div>
 
                     {/* Contact Form */}

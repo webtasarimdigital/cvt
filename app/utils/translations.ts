@@ -37,6 +37,7 @@ export const translations = {
             deliveries: "SUCCESSFUL DELIVERIES",
         },
         values: {
+            title: "OUR CORPORATE VALUES",
             quality: "Quality",
             innovation: "Innovation",
             customerFocus: "Customer Focus",
@@ -136,6 +137,24 @@ export const translations = {
             mobile: "(Mobile)",
             office: "(Office)",
         },
+        aboutSection: {
+            title: "Doing it right,\nkeeping our promise,\nmoving with confidence.",
+            description1: "Cvtlog Logistics is a full service freight forwarder offering import and export services from/to Turkey. With an experience of over 25 years we will offer you innovative, competitive and cost effective logistics solutions.",
+            description2: "CVT LOGISTICS, adopts a customer-oriented approach where customers can easily convey their requests and complaints, handling them with objectivity, fairness, and confidentiality.",
+            button: "About Us"
+        },
+        aboutPage: {
+            title: "ABOUT US",
+            subtitle: "Global Logistics Partner",
+            introTitle: "We connect the world with trust and speed.",
+            introText: "Established in 2001, CVT Logistics has grown from a local transport company to a global logistics powerhouse. Our mission is to provide seamless, efficient, and sustainable transport solutions that drive your business forward.",
+            missionTitle: "Our Mission",
+            missionText: "To deliver excellence in every shipment, ensuring reliability and customer satisfaction through innovative logistics solutions.",
+            visionTitle: "Our Vision",
+            visionText: "To be the world's most trusted and sustainable logistics partner, connecting markets and people with zero barriers.",
+            teamTitle: "Our Expert Team",
+            teamText: "Our success is driven by our dedicated team of logistics experts, drivers, and support staff who work 24/7 to keep your cargo moving.",
+        },
         footer: {
             about: "With over 25 years of experience, CVT Logistics offers innovative and cost-effective solutions for your global transport needs.",
             servicesTitle: "Our Services",
@@ -187,6 +206,7 @@ export const translations = {
             deliveries: "BAŞARILI TESLİMAT",
         },
         values: {
+            title: "KURUMSAL DEĞERLERİMİZ",
             quality: "Kalite",
             innovation: "İnovasyon",
             customerFocus: "Müşteri Odaklılık",
@@ -285,6 +305,24 @@ export const translations = {
             sendEmail: "E-posta ile Gönder",
             mobile: "(Mobil)",
             office: "(Ofis)",
+        },
+        aboutSection: {
+            title: "İşini doğru yapmak,\nsözünü tutmak,\ngüvenle ilerlemek.",
+            description1: "Cvtlog Lojistik, Türkiye'den/Türkiye'ye ithalat ve ihracat hizmetleri sunan tam hizmetli bir nakliye firmasıdır. 25 yılı aşkın tecrübemizle size yenilikçi, rekabetçi ve uygun maliyetli lojistik çözümleri sunuyoruz.",
+            description2: "CVT LOJİSTİK, müşterilerin talep ve şikayetlerini kolayca iletebildiği, bunları objektiflik, adillik ve gizlilikle ele alan müşteri odaklı bir yaklaşımı benimser.",
+            button: "Hakkımızda"
+        },
+        aboutPage: {
+            title: "HAKKIMIZDA",
+            subtitle: "Küresel Lojistik Ortağınız",
+            introTitle: "Dünyayı güven ve hızla birbirine bağlıyoruz.",
+            introText: "2001 yılında kurulan CVT Lojistik, yerel bir nakliye şirketinden küresel bir lojistik devine dönüştü. Misyonumuz, işinizi ileriye taşıyan sorunsuz, verimli ve sürdürülebilir taşıma çözümleri sunmaktır.",
+            missionTitle: "Misyonumuz",
+            missionText: "Her sevkiyatta mükemmelliği sunmak, yenilikçi lojistik çözümleriyle güvenilirlik ve müşteri memnuniyetini sağlamak.",
+            visionTitle: "Vizyonumuz",
+            visionText: "Pazarları ve insanları sıfır engelle birbirine bağlayan, dünyanın en güvenilir ve sürdürülebilir lojistik ortağı olmak.",
+            teamTitle: "Uzman Ekibimiz",
+            teamText: "Başarımız, kargonuzu hareket halinde tutmak için 7/24 çalışan kendini işine adamış lojistik uzmanlarımız, sürücülerimiz ve destek personelimizden oluşan ekibimizden gelmektedir.",
         },
         footer: {
             about: "25 yılı aşkın tecrübesiyle CVT Lojistik, küresel taşımacılık ihtiyaçlarınız için yenilikçi ve uygun maliyetli çözümler sunar.",
