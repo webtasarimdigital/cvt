@@ -86,6 +86,35 @@ export const translations = {
             title: "Latest News & Insights",
             subtitle: "Stay updated with the latest trends in logistics.",
             readMore: "Read More",
+            posts: [
+                {
+                    id: 1,
+                    slug: "evolution-of-logistics",
+                    title: "The Evolution of Global Logistics in 2026",
+                    excerpt: "Discover how AI and automation are reshaping the logistics landscape, making supply chains faster and more resilient than ever before.",
+                    content: "The logistics industry is undergoing a massive transformation in 2026. With the integration of Artificial Intelligence (AI) and machine learning, supply chains are becoming more predictive and less reactive. Autonomous vehicles and drones are no longer just concepts but are actively being tested and deployed in last-mile delivery...",
+                    date: "Feb 5, 2026",
+                    image: "/uploaded_media_1770312598039.png" // Road image reuse or specific one
+                },
+                {
+                    id: 2,
+                    slug: "sustainable-shipping",
+                    title: "Sustainable Shipping: A Green Future",
+                    excerpt: "As environmental concerns grow, the maritime industry is adopting new technologies to reduce carbon footprints and promote sustainability.",
+                    content: "Sustainability is at the forefront of the maritime industry's agenda. From LNG-powered vessels to wind-assisted propulsion systems, shipping companies are investing heavily in green technologies. The International Maritime Organization (IMO) has set ambitious targets...",
+                    date: "Feb 2, 2026",
+                    image: "/uploaded_media_1770312890982.png" // Sea image reuse
+                },
+                {
+                    id: 3,
+                    slug: "air-freight-trends",
+                    title: "Air Freight Trends to Watch",
+                    excerpt: "Speed vs. Cost: How businesses are optimizing their air freight strategies in a volatile global market.",
+                    content: "Air freight remains the fastest mode of transport, but it comes at a premium. In 2026, businesses are adopting hybrid strategies, combining air and sea freight (Sea-Air) to balance speed and cost. Additionally, the rise of e-commerce continues to drive demand for air cargo capacity...",
+                    date: "Jan 28, 2026",
+                    image: "/uploaded_media_1770312690159.png" // Air image reuse
+                }
+            ]
         },
         contact: {
             title: "CONTACT US",
@@ -207,6 +236,35 @@ export const translations = {
             title: "Haberler & İçgörüler",
             subtitle: "Lojistik dünyasındaki son gelişmelerden haberdar olun.",
             readMore: "Devamını Oku",
+            posts: [
+                {
+                    id: 1,
+                    slug: "evolution-of-logistics",
+                    title: "2026'da Küresel Lojistiğin Evrimi",
+                    excerpt: "Yapay zeka ve otomasyonun lojistik dünyasını nasıl yeniden şekillendirdiğini ve tedarik zincirlerini nasıl hızlandırdığını keşfedin.",
+                    content: "Lojistik sektörü 2026 yılında büyük bir dönüşüm geçiriyor. Yapay Zeka (AI) ve makine öğreniminin entegrasyonu ile tedarik zincirleri daha öngörülebilir hale geliyor. Otonom araçlar ve dronlar artık sadece konsept değil, son kilometre teslimatlarında aktif olarak test ediliyor ve kullanılıyor...",
+                    date: "5 Şub, 2026",
+                    image: "/uploaded_media_1770312598039.png"
+                },
+                {
+                    id: 2,
+                    slug: "sustainable-shipping",
+                    title: "Sürdürülebilir Denizcilik: Yeşil Bir Gelecek",
+                    excerpt: "Çevresel endişeler arttıkça, denizcilik endüstrisi karbon ayak izini azaltmak ve sürdürülebilirliği teşvik etmek için yeni teknolojiler benimsiyor.",
+                    content: "Sürdürülebilirlik, denizcilik endüstrisinin gündeminin en üst sırasında yer alıyor. LNG ile çalışan gemilerden rüzgar destekli itki sistemlerine kadar, nakliye şirketleri yeşil teknolojilere büyük yatırımlar yapıyor. Uluslararası Denizcilik Örgütü (IMO) iddialı hedefler belirledi...",
+                    date: "2 Şub, 2026",
+                    image: "/uploaded_media_1770312890982.png"
+                },
+                {
+                    id: 3,
+                    slug: "air-freight-trends",
+                    title: "Takip Edilmesi Gereken Hava Kargo Trendleri",
+                    excerpt: "Hız ve Maliyet: İşletmeler, değişken küresel pazarda hava kargo stratejilerini nasıl optimize ediyor?",
+                    content: "Hava kargo en hızlı taşıma modu olmaya devam ediyor, ancak maliyeti yüksek. 2026'da işletmeler, hız ve maliyeti dengelemek için hava ve deniz taşımacılığını birleştiren hibrit stratejiler benimsiyor (Sea-Air). Ayrıca, e-ticaretin yükselişi hava kargo kapasitesine olan talebi artırmaya devam ediyor...",
+                    date: "28 Oca, 2026",
+                    image: "/uploaded_media_1770312690159.png"
+                }
+            ]
         },
         contact: {
             title: "İLETİŞİM",
