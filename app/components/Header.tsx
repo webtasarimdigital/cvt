@@ -26,7 +26,7 @@ export default function Header() {
                     {/* Contact Info & Language (Visible on Mobile) */}
                     <div className="flex flex-wrap md:flex-nowrap gap-3 md:gap-6 w-full md:w-auto justify-center md:justify-end items-center">
                         <a href="tel:+905323039048" className="flex items-center gap-1.5 hover:text-cvt-cyan transition whitespace-nowrap">
-                            <FaPhone size={10} /> +90 532 303 90 48
+                            <FaPhone size={10} className="scale-x-[-1]" /> +90 532 303 90 48
                         </a>
                         <a href="mailto:cvt@cvtlogistics.com" className="flex items-center gap-1.5 hover:text-cvt-cyan transition whitespace-nowrap">
                             <FaEnvelope size={10} /> cvt@cvtlogistics.com
@@ -173,7 +173,7 @@ export default function Header() {
 
                         <div className="mt-8 pt-8 border-t border-white/10 w-full flex flex-col items-center gap-4">
                             <a href="tel:+905323039048" className="text-gray-300 hover:text-white flex items-center gap-2">
-                                <FaPhone size={14} /> +90 532 303 90 48
+                                <FaPhone size={14} className="scale-x-[-1]" /> +90 532 303 90 48
                             </a>
                             <a href="mailto:cvt@cvtlogistics.com" className="text-gray-300 hover:text-white flex items-center gap-2">
                                 <FaEnvelope size={14} /> cvt@cvtlogistics.com

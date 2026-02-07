@@ -154,8 +154,8 @@ export default function HeroSlider() {
         <div className="relative min-h-[100dvh] w-full bg-slate-50 overflow-hidden flex flex-col md:flex-row select-none">
 
             {/* Left Content Area */}
-            <div className="relative z-20 w-full md:w-[52%] flex items-center justify-center px-6 md:pl-20 md:pr-4 bg-white pt-8 md:pt-0 pointer-events-none md:pointer-events-auto shrink-0 order-2 md:order-1">
-                <div className="flex flex-col gap-4 md:gap-6 max-w-xl z-10 animate-fade-in-up pointer-events-auto py-10 md:py-0">
+            <div className="relative z-20 w-full md:w-[52%] flex items-center justify-center px-6 md:pl-20 md:pr-4 bg-white pt-2 md:pt-0 pointer-events-none md:pointer-events-auto shrink-0 order-2 md:order-1">
+                <div className="flex flex-col gap-4 md:gap-6 max-w-xl z-10 animate-fade-in-up pointer-events-auto py-2 md:py-0">
                     <div className="flex items-center gap-3 text-cvt-cyan font-bold tracking-widest uppercase text-xs md:text-sm">
                         <span className="p-2 bg-cvt-cyan/10 rounded-lg text-lg">
                             {currentCategory.icon}
@@ -183,6 +183,13 @@ export default function HeroSlider() {
             {/* Right Image Area */}
             <div
                 className="relative w-full md:absolute md:inset-y-0 md:right-0 md:w-[48%] h-[40vh] md:h-full bg-gray-900 overflow-hidden cursor-grab active:cursor-grabbing z-20 md:z-30 order-1 md:order-2 md:rounded-l-[200px]"
+                onTouchStart={onTouchStart}
+                onTouchMove={onTouchMove}
+                onTouchEnd={onTouchEnd}
+                onMouseDown={onMouseDown}
+                onMouseMove={onMouseMove}
+                onMouseUp={onMouseUp}
+                onMouseLeave={onMouseLeave}
             >
                 {/* Desktop shaped clip-path via inline style conditioned, or just use a full rect on mobile and shape on desktop via duplicate div or media query? 
                     Let's just use a class and custom style.
@@ -210,6 +217,26 @@ export default function HeroSlider() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent md:bg-gradient-to-r md:from-black/20" />
                     </div>
                 ))}
+
+                {/* Pagination Dots */}
+                <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-50 flex gap-3 pointer-events-auto">
+                    {currentCategory.images.map((_, idx) => (
+                        <button
+                            key={idx}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setSubIndices(prev => {
+                                    const newIndices = [...prev];
+                                    newIndices[activeCategory] = idx;
+                                    return newIndices;
+                                });
+                            }}
+                            className={`w-3 h-3 rounded-full border-2 transition-all duration-300 shadow-sm ${idx === currentImageIndex ? "bg-cvt-cyan border-cvt-cyan scale-125" : "bg-transparent border-white hover:bg-white/30"
+                                }`}
+                            aria-label={`Go to image ${idx + 1}`}
+                        />
+                    ))}
+                </div>
             </div>
 
             {/* Clip Path Helper for Desktop - Applying via style attribute conditionally is hard in SSR without hydration mismatch. 
@@ -222,18 +249,18 @@ export default function HeroSlider() {
                  I will try to remove it for now to fix the "kayma" (shift/cut) issue.
              */}
 
-            {/* Global Navigation Arrows - Center on Image for Mobile, Center on Right for Desktop */}
-            <div className="absolute top-[20vh] -translate-y-1/2 left-0 right-0 px-4 md:px-12 md:top-1/2 md:translate-y-0 md:bottom-auto md:w-full flex justify-between z-50 pointer-events-none">
+            {/* Desktop Navigation Arrows (Hidden on Mobile) */}
+            <div className="absolute hidden md:flex top-1/2 -translate-y-1/2 left-0 right-0 px-12 justify-between z-50 pointer-events-none w-full">
                 <button
                     onClick={(e) => { e.stopPropagation(); handleCategoryChange("prev"); }}
-                    className="w-10 h-10 md:w-14 md:h-14 bg-white/80 md:bg-white text-cvt-blue rounded-full shadow-2xl flex items-center justify-center hover:bg-cvt-cyan hover:text-white transition group border border-gray-100 pointer-events-auto active:scale-95 backdrop-blur-sm"
+                    className="w-14 h-14 bg-white text-cvt-blue rounded-full shadow-2xl flex items-center justify-center hover:bg-cvt-cyan hover:text-white transition group border border-gray-100 pointer-events-auto active:scale-95"
                 >
                     <FaChevronLeft className="group-hover:-translate-x-1 transition" size={16} />
                 </button>
 
                 <button
                     onClick={(e) => { e.stopPropagation(); handleCategoryChange("next"); }}
-                    className="w-10 h-10 md:w-14 md:h-14 bg-white/80 md:bg-white text-cvt-blue rounded-full shadow-2xl flex items-center justify-center hover:bg-cvt-cyan hover:text-white transition group border border-gray-100 pointer-events-auto active:scale-95 backdrop-blur-sm"
+                    className="w-14 h-14 bg-white text-cvt-blue rounded-full shadow-2xl flex items-center justify-center hover:bg-cvt-cyan hover:text-white transition group border border-gray-100 pointer-events-auto active:scale-95"
                 >
                     <FaChevronRight className="group-hover:translate-x-1 transition" size={16} />
                 </button>
