@@ -61,7 +61,7 @@ export default function AboutSection() {
 
                     {/* Right Column: Content */}
                     <div className="w-full lg:w-1/2 flex flex-col gap-8">
-                        <h2 className="text-4xl lg:text-5xl font-extrabold text-[#1b2e38] leading-tight text-right lg:text-left whitespace-pre-line">
+                        <h2 className="text-4xl lg:text-5xl font-extrabold text-[#1b2e38] leading-tight text-left whitespace-pre-line">
                             <span className="text-cvt-cyan">{t.aboutSection.title}</span>
                         </h2>
 

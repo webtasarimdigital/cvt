@@ -132,21 +132,40 @@ export default function Header() {
                         <FaTimes />
                     </button>
 
-                    <div className="mt-12 flex flex-col items-center gap-8">
-                        <Link href="/" onClick={() => setIsMenuOpen(false)} className="relative h-16 w-48 mb-6">
-                            <Image src="/logo.png" alt="CVT Logistics" fill className="object-contain brightness-0 invert" />
-                        </Link>
-
-                        <nav className="flex flex-col items-center gap-6 text-xl font-bold text-white tracking-widest uppercase">
+                    <div className="mt-20 flex flex-col items-center gap-8 w-full max-w-md mx-auto">
+                        <nav className="flex flex-col items-center gap-6 text-xl font-bold text-white tracking-widest uppercase w-full">
                             <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-cvt-cyan transition">
                                 {t.header.home}
                             </Link>
                             <Link href="/about" onClick={() => setIsMenuOpen(false)} className="hover:text-cvt-cyan transition">
                                 {t.header.about}
                             </Link>
-                            <Link href="/services" onClick={() => setIsMenuOpen(false)} className="hover:text-cvt-cyan transition">
-                                {t.header.services}
+
+                            {/* Services with Submenu */}
+                            <div className="flex flex-col items-center w-full bg-white/5 rounded-xl p-4 gap-4 border border-white/10">
+                                <Link href="/services" onClick={() => setIsMenuOpen(false)} className="hover:text-cvt-cyan transition text-cvt-cyan">
+                                    {t.header.services}
+                                </Link>
+                                <div className="flex flex-col items-center gap-3 text-sm font-medium text-gray-300 tracking-wider">
+                                    <Link href="/services/road" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition">
+                                        {t.services.road}
+                                    </Link>
+                                    <Link href="/services/sea" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition">
+                                        {t.services.sea}
+                                    </Link>
+                                    <Link href="/services/air" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition">
+                                        {t.services.air}
+                                    </Link>
+                                    <Link href="/services/rail" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition">
+                                        {t.services.rail}
+                                    </Link>
+                                </div>
+                            </div>
+
+                            <Link href="/blog" onClick={() => setIsMenuOpen(false)} className="hover:text-cvt-cyan transition">
+                                {t.header.blog}
                             </Link>
+
                             <Link href="/contact" onClick={() => setIsMenuOpen(false)} className="hover:text-cvt-cyan transition">
                                 {t.header.contact}
                             </Link>

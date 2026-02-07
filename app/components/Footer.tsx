@@ -80,8 +80,8 @@ export default function Footer() {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/contact" className="hover:text-cvt-cyan transition flex items-center gap-2 group whitespace-nowrap">
-                                        <FaChevronRight className="text-[10px] text-cvt-cyan opacity-0 group-hover:opacity-100 transition-opacity" /> {t.header.getQuote}
+                                    <Link href="/blog" className="hover:text-cvt-cyan transition flex items-center gap-2 group whitespace-nowrap">
+                                        <FaChevronRight className="text-[10px] text-cvt-cyan opacity-0 group-hover:opacity-100 transition-opacity" /> {t.header.blog}
                                     </Link>
                                 </li>
                                 <li>
