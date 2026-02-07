@@ -51,7 +51,7 @@ export default function ServicesPage() {
             <Header />
 
             {/* Hero Section */}
-            <div className="relative pt-40 pb-20 md:pt-48 md:pb-32 bg-[#1b2e38] text-white">
+            <div className="relative pt-32 pb-10 md:pt-40 md:pb-16 bg-[#1b2e38] text-white">
                 <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url('/road_transport_highway.png')", backgroundSize: "cover", backgroundPosition: "center" }}></div>
                 <div className="container mx-auto px-4 relative z-10 text-center">
                     <h1 className="text-4xl md:text-5xl font-extrabold uppercase tracking-wide mb-4">

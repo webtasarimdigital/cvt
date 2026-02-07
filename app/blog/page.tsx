@@ -19,13 +19,13 @@ export default function BlogListing() {
             <Header />
 
             {/* Page Header */}
-            <div className="bg-[#1b2e38] pt-40 pb-20 text-white relative overflow-hidden">
+            <div className="relative pt-32 pb-10 md:pt-40 md:pb-16 bg-[#1b2e38] text-white overflow-hidden">
                 <div className="absolute inset-0 opacity-10">
                     <Image src="/pattern.png" alt="pattern" fill className="object-cover" />
                 </div>
                 <div className="container mx-auto px-4 relative z-10 text-center">
-                    <h1 className="text-4xl md:text-5xl font-black mb-4 tracking-tight">{t.blog.title}</h1>
-                    <p className="text-gray-400 text-lg max-w-2xl mx-auto">{t.blog.subtitle}</p>
+                    <h1 className="text-4xl md:text-5xl font-extrabold uppercase tracking-wide mb-4">{t.blog.title}</h1>
+                    <p className="text-xl text-gray-300 max-w-2xl mx-auto">{t.blog.subtitle}</p>
                 </div>
             </div>
 

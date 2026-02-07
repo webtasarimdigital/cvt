@@ -182,8 +182,7 @@ export default function HeroSlider() {
 
             {/* Right Image Area */}
             <div
-                className="relative w-full md:w-[60%] h-[40vh] md:h-full bg-gray-900 overflow-hidden ml-0 md:-ml-24 cursor-grab active:cursor-grabbing order-2"
-                style={{ clipPath: "ellipse(80% 100% at 80% 50%)" }} // Restored curved design
+                className="relative w-full md:absolute md:inset-y-0 md:right-0 md:w-[60%] h-[40vh] md:h-full bg-gray-900 overflow-hidden cursor-grab active:cursor-grabbing z-0"
             >
                 {/* Desktop shaped clip-path via inline style conditioned, or just use a full rect on mobile and shape on desktop via duplicate div or media query? 
                     Let's just use a class and custom style.

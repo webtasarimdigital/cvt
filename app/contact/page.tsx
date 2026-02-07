@@ -35,7 +35,7 @@ export default function ContactPage() {
             <Header />
 
             {/* Page Header */}
-            <div className="relative pt-40 pb-20 md:pt-48 md:pb-32 bg-[#1b2e38] text-white">
+            <div className="relative pt-32 pb-10 md:pt-40 md:pb-16 bg-[#1b2e38] text-white">
                 <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url('/network-connection-background_23-2148879892.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-[#1b2e38]/80 to-[#1b2e38]/90 z-0"></div>
                 <div className="container mx-auto px-4 relative z-10 text-center">
@@ -62,11 +62,9 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-gray-800">{t.contact.addressTitle}</h4>
-                                    <p className="text-gray-600 leading-relaxed text-sm">
+                                    <p className="text-gray-600 leading-relaxed text-sm whitespace-pre-line">
                                         CVTLOG DIS TICARET LTD. STI.<br />
-                                        Cevizli Mah. Mustafa Kemal Cad.<br />
-                                        Hukukcular Towers A Blok No:66 A , D.111<br />
-                                        PK:34865 Kartal – Istanbul - Turkey
+                                        {t.footer.address}
                                     </p>
                                 </div>
                             </div>
@@ -92,10 +90,10 @@ export default function ContactPage() {
                             </div>
                         </div>
 
-                        {/* Map Embed - Using a Google Maps search link as placeholder since no API key */}
+                        {/* Map Embed - Updated to Hukukçular Towers coordinates */}
                         <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100 h-64 md:h-80 relative group">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3013.987728796859!2d29.176466912389146!3d40.92348397123984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac5aeb6575199%3A0x6731998f4836f01!2sHukuk%C3%A7ular%20Towers!5e0!3m2!1str!2str!4v1707123456789!5m2!1str!2str"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3014.288!2d29.1837!3d40.8920!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac5aeb6575199%3A0x6731998f4836f01!2sHukuk%C3%A7ular%20Towers!5e0!3m2!1str!2str!4v1707123456789!5m2!1str!2str"
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0 }}
