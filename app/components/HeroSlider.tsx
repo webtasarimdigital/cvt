@@ -154,7 +154,7 @@ export default function HeroSlider() {
         <div className="relative min-h-[100dvh] w-full bg-slate-50 overflow-hidden flex flex-col md:flex-row select-none">
 
             {/* Left Content Area */}
-            <div className="relative z-20 w-full md:w-[55%] flex items-center justify-center px-6 md:pl-20 md:pr-4 bg-white pt-8 md:pt-0 pointer-events-none md:pointer-events-auto shrink-0 order-2 md:order-1">
+            <div className="relative z-20 w-full md:w-[52%] flex items-center justify-center px-6 md:pl-20 md:pr-4 bg-white pt-8 md:pt-0 pointer-events-none md:pointer-events-auto shrink-0 order-2 md:order-1">
                 <div className="flex flex-col gap-4 md:gap-6 max-w-xl z-10 animate-fade-in-up pointer-events-auto py-10 md:py-0">
                     <div className="flex items-center gap-3 text-cvt-cyan font-bold tracking-widest uppercase text-xs md:text-sm">
                         <span className="p-2 bg-cvt-cyan/10 rounded-lg text-lg">
@@ -182,7 +182,7 @@ export default function HeroSlider() {
 
             {/* Right Image Area */}
             <div
-                className="relative w-full md:absolute md:inset-y-0 md:right-0 md:w-[60%] h-[40vh] md:h-full bg-gray-900 overflow-hidden cursor-grab active:cursor-grabbing z-20 md:z-30 order-1 md:order-2 md:rounded-l-[50%]"
+                className="relative w-full md:absolute md:inset-y-0 md:right-0 md:w-[48%] h-[40vh] md:h-full bg-gray-900 overflow-hidden cursor-grab active:cursor-grabbing z-20 md:z-30 order-1 md:order-2 md:rounded-l-[200px]"
             >
                 {/* Desktop shaped clip-path via inline style conditioned, or just use a full rect on mobile and shape on desktop via duplicate div or media query? 
                     Let's just use a class and custom style.
