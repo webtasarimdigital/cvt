@@ -18,15 +18,23 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
     // Optional: Persist language to localStorage
     useEffect(() => {
-        const savedLanguage = localStorage.getItem("language") as Language;
-        if (savedLanguage && (savedLanguage === "en" || savedLanguage === "tr")) {
-            setLanguage(savedLanguage);
+        try {
+            const savedLanguage = localStorage.getItem("language") as Language;
+            if (savedLanguage && (savedLanguage === "en" || savedLanguage === "tr")) {
+                setLanguage(savedLanguage);
+            }
+        } catch (error) {
+            console.warn("Could not access localStorage (likely disabled):", error);
         }
     }, []);
 
     const handleSetLanguage = (lang: Language) => {
         setLanguage(lang);
-        localStorage.setItem("language", lang);
+        try {
+            localStorage.setItem("language", lang);
+        } catch (error) {
+            console.warn("Could not access localStorage (likely disabled):", error);
+        }
     };
 
     const t = translations[language];
