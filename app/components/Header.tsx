@@ -18,7 +18,7 @@ export default function Header() {
                     </div>
                     <div className="flex gap-6 hidden md:flex">
                         <a href="tel:+902123550600" className="flex items-center gap-2 hover:text-cvt-cyan transition">
-                            <FaPhone size={12} /> +90 212 355 06 00
+                            <FaPhone size={12} /> +90 216 475 55 92
                         </a>
                         <a href="mailto:cvt@cvtlogistics.com" className="flex items-center gap-2 hover:text-cvt-cyan transition">
                             <FaEnvelope size={12} /> cvt@cvtlogistics.com
