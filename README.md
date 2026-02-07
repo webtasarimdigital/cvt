@@ -10,4 +10,4 @@ Müşteri odaklı yaklaşımı ile lojistik süreçlerini optimize etmeyi hedefl
 Kurulum talimatları buraya eklenecektir.
 
 ## Lisans
-[Lisans Bilgisi]
+[Lisans Bilgisi] - Deployment v1.1
