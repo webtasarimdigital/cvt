@@ -1,11 +1,10 @@
 export const translations = {
     en: {
         header: {
-            corporate: "CORPORATE",
+            home: "HOME",
+            about: "ABOUT US",
             services: "SERVICES",
-            companies: "OUR COMPANIES",
-            transactions: "ONLINE TRANSACTIONS",
-            hr: "HUMAN RESOURCES",
+            blog: "BLOG",
             contact: "CONTACT",
             getQuote: "GET A QUOTE",
         },
@@ -123,11 +122,10 @@ export const translations = {
     },
     tr: {
         header: {
-            corporate: "KURUMSAL",
+            home: "ANA SAYFA",
+            about: "HAKKIMIZDA",
             services: "HİZMETLERİMİZ",
-            companies: "ŞİRKETLERİMİZ",
-            transactions: "ONLINE İŞLEMLER",
-            hr: "İNSAN KAYNAKLARI",
+            blog: "BLOG",
             contact: "İLETİŞİM",
             getQuote: "TEKLİF AL",
         },
