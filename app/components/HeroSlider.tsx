@@ -232,7 +232,7 @@ export default function HeroSlider() {
                 ))}
 
                 {/* Mobile Navigation Arrows (Inside Image) */}
-                <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 w-full px-4 flex justify-between z-40 pointer-events-none md:hidden gap-4">
+                <div className="absolute top-[60%] -translate-y-1/2 left-0 right-0 w-full px-4 flex justify-between z-40 pointer-events-none md:hidden gap-4">
                     <button
                         onClick={(e) => { e.stopPropagation(); handleCategoryChange("prev"); }}
                         className="w-10 h-10 bg-white/90 text-cvt-blue rounded-full shadow-lg flex items-center justify-center active:scale-95 backdrop-blur-md pointer-events-auto hover:bg-white transition"
