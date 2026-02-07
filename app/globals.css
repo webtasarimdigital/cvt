@@ -48,3 +48,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@media (min-width: 768px) {
+  .hero-clip-desktop-v2 {
+    -webkit-clip-path: ellipse(80% 100% at 80% 50%) !important;
+    clip-path: ellipse(80% 100% at 80% 50%) !important;
+  }
+}
