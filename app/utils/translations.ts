@@ -173,7 +173,7 @@ export const translations = {
             title: "ABOUT US",
             subtitle: "Global Logistics Partner",
             introTitle: "We connect the world with trust and speed.",
-            introText: "Established in 2001, CVT Logistics has grown from a local transport company to a global logistics powerhouse. Our mission is to provide seamless, efficient, and sustainable transport solutions that drive your business forward.",
+            introText: "CVT Logistics has grown from a local transport company to a global logistics powerhouse. Our mission is to provide seamless, efficient, and sustainable transport solutions that drive your business forward.",
             missionTitle: "Our Mission",
             missionText: "To deliver excellence in every shipment, ensuring reliability and customer satisfaction through innovative logistics solutions.",
             visionTitle: "Our Vision",
